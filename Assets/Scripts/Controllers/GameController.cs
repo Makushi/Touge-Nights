@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
         EventManager.onGameOver += GameOver;
         EventManager.onRetry += Retry;
         EventManager.onLapCompleted += GameWon;
+        EventManager.onContinue += Continue;
+        EventManager.onQuitToMainMenu += QuitToMainMenu;
     }
 
     private void OnDisable()
@@ -24,11 +26,28 @@ public class GameController : MonoBehaviour
         EventManager.onGameOver -= GameOver;
         EventManager.onRetry -= Retry;
         EventManager.onLapCompleted -= GameWon;
+        EventManager.onContinue -= Continue;
+        EventManager.onQuitToMainMenu += QuitToMainMenu;
     }
 
     private void Awake()
     {
         Initialize();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isGameRunning)
+            {
+                Pause();
+            }
+            else
+            {
+                Continue();
+            }
+        }
     }
 
     private void Initialize()
@@ -47,6 +66,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         SetGameState(false);
+        //AudioManager.Instance.PlayRandomSong();
     }
     private void StartGame()
     {
@@ -71,6 +91,29 @@ public class GameController : MonoBehaviour
         SetGameState(true);
         EventManager.SwitchUI(UIType.GameUI);
         AudioManager.Instance.PlayRandomSong();
+    }
+
+    private void Pause()
+    {
+        SetGameState(false);
+        EventManager.SwitchUI(UIType.PauseMenu);
+        EventManager.Pause();
+        AudioManager.Instance.SetPauseMenuVolume();
+    }
+
+    private void Continue()
+    {
+        SetGameState(true);
+        EventManager.SwitchUI(UIType.GameUI);
+        AudioManager.Instance.SetGameplayVolume();
+    }
+
+    private void QuitToMainMenu()
+    {
+        SetGameState(false);
+        AudioManager.Instance.StopMusic();
+        EventManager.SwitchUI(UIType.MainMenu);
+        SceneManager.LoadScene(3, LoadSceneMode.Additive);
     }
 
     private void SetGameState(bool state)

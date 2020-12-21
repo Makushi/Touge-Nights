@@ -25,6 +25,15 @@ public class EventManager : MonoBehaviour
     public delegate void OnRetry();
     public static event OnRetry onRetry;
 
+    public delegate void OnContinue();
+    public static event OnContinue onContinue;
+
+    public delegate void OnPause();
+    public static event OnPause onPause;
+
+    public delegate void OnQuitToMainMenu();
+    public static event OnQuitToMainMenu onQuitToMainMenu;
+
     public delegate void OnSwitchUI(UIType ui);
     public static event OnSwitchUI onSwitchUI;
 
@@ -61,6 +70,30 @@ public class EventManager : MonoBehaviour
         if (onRetry != null)
         {
             onRetry();
+        }
+    }
+
+    public static void Continue()
+    {
+        if (onContinue != null)
+        {
+            onContinue();
+        }
+    }
+
+    public static void Pause()
+    {
+        if (onPause != null)
+        {
+            onPause();
+        }
+    }
+
+    public static void QuitToMainMenu()
+    {
+        if (onQuitToMainMenu != null)
+        {
+            onQuitToMainMenu();
         }
     }
 

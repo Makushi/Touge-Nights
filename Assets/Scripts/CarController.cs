@@ -65,11 +65,17 @@ public class CarController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.onRetry += DestroyPlayer;
+        EventManager.onQuitToMainMenu += DestroyPlayer;
+        EventManager.onPause += HandlePause;
+        EventManager.onContinue += HandlePause;
     }
 
     private void OnDisable()
     {
         EventManager.onRetry -= DestroyPlayer;
+        EventManager.onQuitToMainMenu -= DestroyPlayer;
+        EventManager.onPause += HandlePause;
+        EventManager.onContinue += HandlePause;
     }
 
     private void Awake()
@@ -123,7 +129,7 @@ public class CarController : MonoBehaviour
 
         //Debug.Log(angleVelocityOffset);
 
-        if (angleVelocityOffset >= driftAngleVelocity && currentSpeed > 0)
+        if (angleVelocityOffset >= driftAngleVelocity && (int)currentSpeed > 0)
         {
             isDrifting = true;
             UpdateEnergy(energyIncreaseRate);
@@ -276,6 +282,19 @@ public class CarController : MonoBehaviour
     private void OutOfEnergy()
     {
         EventManager.GameOver();
+    }
+
+    private void HandlePause()
+    {
+        if (GameController.Instance.isGameRunning)
+        {
+            engineSource.Play();
+        }
+        else
+        {
+            engineSource.Pause();
+            driftSource.Stop();
+        }
     }
 
     private void DestroyPlayer()

@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float[] volumeSettings = null;
     [SerializeField] private float[] pitchSettings = null;
 
-    [SerializeField] private float volumeAutomationTime = 1.0f;
+    [SerializeField] private float volumeAutomationTime = 0.5f;
     [SerializeField] private float pitchAutomationTime = 1.0f;
 
     private float volumeT = 0;
@@ -27,7 +27,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager Instance = null;
 
-    public enum VOLUME { LOW, MID, HIGH };
+    public enum VOLUME { GAMEPLAY, PAUSE };
     public enum PITCH { LOW, NORMAL, HIGH };
 
     private void Awake()
@@ -66,6 +66,21 @@ public class AudioManager : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = songs[Random.Range(0, songs.Length)];
         audioSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        audioSource.Stop();
+    }
+
+    public void SetPauseMenuVolume() 
+    {
+        audioSource.volume = volumeSettings[(int)VOLUME.PAUSE];
+    }
+
+    public void SetGameplayVolume()
+    {
+        audioSource.volume = volumeSettings[(int)VOLUME.GAMEPLAY];
     }
 
     public void SetVolume(int volume)

@@ -676,13 +676,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437965275}
-  m_LocalRotation: {x: 0.0075852466, y: 0.9901146, z: 0.059171688, w: -0.12694214}
-  m_LocalPosition: {x: 1413.3804, y: 174.73851, z: 639.6643}
+  m_LocalRotation: {x: 0.18460284, y: 0.6770264, z: -0.1814087, w: 0.688947}
+  m_LocalPosition: {x: 946, y: 224, z: 923}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 89, z: 0}
 --- !u!1 &1663719639
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +779,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5787a30996a01ef4c97a11f515785227, type: 3}
   - {fileID: 8300000, guid: fe3c0895710b08540b6be40d093f75e3, type: 3}
   audioSource: {fileID: 1904007315}
-  volumeSettings: []
+  volumeSettings:
+  - 0.6
+  - 0.2
   pitchSettings: []
   volumeAutomationTime: 1
   pitchAutomationTime: 1
