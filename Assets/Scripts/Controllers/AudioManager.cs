@@ -68,6 +68,13 @@ public class AudioManager : MonoBehaviour
         audioSource.Play();
     }
 
+    public void PlayMenuSong()
+    {
+        audioSource.Stop();
+        audioSource.clip = songs[0];
+        audioSource.Play();
+    }
+
     public void StopMusic()
     {
         audioSource.Stop();

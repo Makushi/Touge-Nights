@@ -773,11 +773,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songs:
-  - {fileID: 8300000, guid: 34e30ec6302b57f4dbb63be243f609dd, type: 3}
-  - {fileID: 8300000, guid: b0aa351a0f2a0fd48bf45c4134811d77, type: 3}
-  - {fileID: 8300000, guid: 32015bf22ca76a641930bab879b4cc37, type: 3}
-  - {fileID: 8300000, guid: 5787a30996a01ef4c97a11f515785227, type: 3}
-  - {fileID: 8300000, guid: fe3c0895710b08540b6be40d093f75e3, type: 3}
+  - {fileID: 8300000, guid: 38d41dd397dbe66438d3d2b7195f0b5d, type: 3}
+  - {fileID: 8300000, guid: 355f2519a5d7b6047ab973be2ee2dc9c, type: 3}
+  - {fileID: 8300000, guid: 5a4a8b02a36481b4cb049afd9d423176, type: 3}
   audioSource: {fileID: 1904007315}
   volumeSettings:
   - 0.6

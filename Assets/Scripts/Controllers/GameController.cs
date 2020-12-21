@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         SetGameState(false);
-        //AudioManager.Instance.PlayRandomSong();
+        AudioManager.Instance.PlayMenuSong();
     }
     private void StartGame()
     {
@@ -95,6 +95,7 @@ public class GameController : MonoBehaviour
     {
         SetGameState(true);
         EventManager.SwitchUI(UIType.GameUI);
+        AudioManager.Instance.SetGameplayVolume();
         AudioManager.Instance.PlayRandomSong();
     }
 
@@ -117,7 +118,8 @@ public class GameController : MonoBehaviour
     {
         gameStarted = false;
         SetGameState(false);
-        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlayMenuSong();
+        AudioManager.Instance.SetGameplayVolume();
         EventManager.SwitchUI(UIType.MainMenu);
         SceneManager.LoadScene(3, LoadSceneMode.Additive);
     }
