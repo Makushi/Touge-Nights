@@ -25,6 +25,9 @@ public class CarController : MonoBehaviour
     private float driftAngleVelocity = 25.0f;
     private float currentSpeed = 0;
 
+    private AudioSource engineSource = null;
+    private AudioSource driftSource = null;
+
     [Header("Car Settings")]
     [SerializeField] private float motorForce;
     [SerializeField] private float maxSpeed;
