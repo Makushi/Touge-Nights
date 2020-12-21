@@ -10,7 +10,8 @@ public enum UIType
     EndScreen,
     GameOver,
     PauseMenu,
-    Credits
+    Credits,
+    HowTo
 }
 public class UIManager : MonoBehaviour
 {
@@ -72,13 +73,16 @@ public class UIManager : MonoBehaviour
     public void OnCreditsPressed()
     {
         SwitchUI(UIType.Credits);
-        Application.Quit();
+    }
+
+    public void OnHowToPressed()
+    {
+        SwitchUI(UIType.HowTo);
     }
 
     public void OnBackFromCreditsPressed()
     {
         SwitchUI(UIType.MainMenu);
-        Application.Quit();
     }
 
     public void OnQuitToMenuPressed()
