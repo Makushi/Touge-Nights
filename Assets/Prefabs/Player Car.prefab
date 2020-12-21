@@ -13727,7 +13727,7 @@ MonoBehaviour:
   maxSpeed: 130
   reverseSpeed: 20
   breakForce: 6000
-  maxSteeringAngle: 30
+  maxSteeringAngle: 35
   decelerationSpeed: 250
   rigidBody: {fileID: 5171990861712249350}
   frontLeftWheelCollider: {fileID: 1979513677379628198}
@@ -13744,8 +13744,6 @@ MonoBehaviour:
   RearRightBreakLightTrail: {fileID: 6963268264685258627}
   LeftTireSmoke: {fileID: 1600581742659239572}
   RightTireSmoke: {fileID: 7638480623979646233}
-  engineSource: {fileID: 0}
-  driftSource: {fileID: 0}
 --- !u!82 &7042710967694514568
 AudioSource:
   m_ObjectHideFlags: 0

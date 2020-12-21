@@ -93,7 +93,7 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        rigidBody.centerOfMass = new Vector3(0.0f, 0.1f, 0.0f);
+        rigidBody.centerOfMass = new Vector3(0.0f, 0.1f, 0.5f);
         EventManager.PlayerSpawned();
         engineSource.Play();
     }
@@ -105,7 +105,9 @@ public class CarController : MonoBehaviour
         
         currentSpeed = rigidBody.velocity.magnitude * 3.6f;
         EventManager.UpdateSpeedometer(rigidBody.velocity.magnitude);
+
         GetInput();
+        HandleSteering();
 
         SwitchBreakLights(isBreaking);
         HandleEngineSound();
@@ -121,7 +123,6 @@ public class CarController : MonoBehaviour
             return;
 
         HandleMotor();
-        HandleSteering();
         UpdateWheels();
         CheckDrifting();
     }
@@ -134,9 +135,7 @@ public class CarController : MonoBehaviour
         velocity.y = 0.0f;
         float angleVelocityOffset = Vector3.Angle(forward, velocity);
 
-        //Debug.Log(angleVelocityOffset);
-
-        if (angleVelocityOffset >= driftAngleVelocity && (int)currentSpeed > 0)
+        if (angleVelocityOffset >= driftAngleVelocity && (int)currentSpeed > 0 && rearLeftWheelCollider.rpm > 0)
         {
             isDrifting = true;
             UpdateEnergy(energyIncreaseRate);
@@ -153,8 +152,6 @@ public class CarController : MonoBehaviour
     {
         float breakSpeed = 0.0f;
         float force = 0.0f;
-
-        isInReverse = false;
 
         if (isAccelerating)
         {
