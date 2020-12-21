@@ -58,10 +58,6 @@ public class CarController : MonoBehaviour
     private ParticleSystem LeftTireSmokePs;
     private ParticleSystem RightTireSmokePs;
 
-    [Header("Sounds")]
-    [SerializeField] private AudioSource engineSource = null;
-    [SerializeField] private AudioSource driftSource = null;
-
     private void OnEnable()
     {
         EventManager.onRetry += DestroyPlayer;
@@ -82,6 +78,10 @@ public class CarController : MonoBehaviour
     {
         LeftTireSmokePs = LeftTireSmoke.GetComponent<ParticleSystem>();
         RightTireSmokePs = RightTireSmoke.GetComponent<ParticleSystem>();
+
+        AudioSource[] sources = GetComponents<AudioSource>();
+        engineSource = sources[0];
+        driftSource = sources[1];
     }
 
     private void Start()
@@ -288,12 +288,16 @@ public class CarController : MonoBehaviour
     {
         if (GameController.Instance.isGameRunning)
         {
-            engineSource.Play();
+            if (engineSource)
+                engineSource.Play();
         }
         else
         {
-            engineSource.Pause();
-            driftSource.Stop();
+            if (engineSource)
+                engineSource.Pause();
+
+            if (driftSource)
+                driftSource.Stop();
         }
     }
 

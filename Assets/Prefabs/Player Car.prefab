@@ -13744,8 +13744,8 @@ MonoBehaviour:
   RearRightBreakLightTrail: {fileID: 6963268264685258627}
   LeftTireSmoke: {fileID: 1600581742659239572}
   RightTireSmoke: {fileID: 7638480623979646233}
-  engineSource: {fileID: 7042710967694514568}
-  driftSource: {fileID: 1547539707773688209}
+  engineSource: {fileID: 0}
+  driftSource: {fileID: 0}
 --- !u!82 &7042710967694514568
 AudioSource:
   m_ObjectHideFlags: 0
