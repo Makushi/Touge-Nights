@@ -67,6 +67,8 @@ public class CarController : MonoBehaviour
         EventManager.onQuitToMainMenu += DestroyPlayer;
         EventManager.onPause += HandlePause;
         EventManager.onContinue += HandlePause;
+        EventManager.onLapCompleted += HandlePause;
+        EventManager.onGameOver += HandlePause;
     }
 
     private void OnDisable()
@@ -75,6 +77,8 @@ public class CarController : MonoBehaviour
         EventManager.onQuitToMainMenu -= DestroyPlayer;
         EventManager.onPause += HandlePause;
         EventManager.onContinue += HandlePause;
+        EventManager.onLapCompleted -= HandlePause;
+        EventManager.onGameOver -= HandlePause;
     }
 
     private void Awake()

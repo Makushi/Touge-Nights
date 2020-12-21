@@ -19,8 +19,6 @@ public class ResultScreen : MonoBehaviour
 
     private void ShowLapTime()
     {
-        Debug.Log("RESULTS");
-        Debug.Log(GameController.Instance.GetTime());
         lapTimeTxt.text = "Your Time: " + GameController.Instance.GetTime();
     }
 }
