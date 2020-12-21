@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public bool isGameRunning = false;
+    private bool gameStarted = false;
 
     public static GameController Instance = null;
     private string lapTime = "";
@@ -37,6 +38,9 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (!gameStarted)
+            return; 
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isGameRunning)
@@ -73,6 +77,7 @@ public class GameController : MonoBehaviour
         SceneManager.UnloadScene(3);
         SetGameState(true);
         AudioManager.Instance.PlayRandomSong();
+        gameStarted = true;
     }
     
     private void GameWon()
@@ -110,6 +115,7 @@ public class GameController : MonoBehaviour
 
     private void QuitToMainMenu()
     {
+        gameStarted = false;
         SetGameState(false);
         AudioManager.Instance.StopMusic();
         EventManager.SwitchUI(UIType.MainMenu);
